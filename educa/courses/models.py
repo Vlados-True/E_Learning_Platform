@@ -81,7 +81,7 @@ class ItemBase(models.Model):
         abstract = True
 
     def __str__(self):
-        return f'{self.order}. {self.title}'
+        return self.title
 
 
 class Text(ItemBase):
