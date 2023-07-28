@@ -17,6 +17,11 @@ class SubjectListView(generics.ListAPIView):
     serializer_class = SubjectSerializer
 
 
+class SubjectDetailView(generics.RetrieveAPIView):
+    queryset = Subject.objects.all()
+    serializer_class = SubjectSerializer
+
+
 class CourseViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
@@ -35,11 +40,6 @@ class CourseViewSet(viewsets.ReadOnlyModelViewSet):
             permission_classes=[IsAuthenticated, IsEnrolled])
     def contents(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
-
-
-class SubjectDetailView(generics.RetrieveAPIView):
-    queryset = Subject.objects.all()
-    serializer_class = SubjectSerializer
 
 # class CourseEnrollView(APIView):
 #     authentication_classes = [BasicAuthentication]
